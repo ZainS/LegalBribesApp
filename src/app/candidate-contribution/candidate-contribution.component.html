@@ -1,0 +1,23 @@
+<p>{{name}}</p>
+<div *ngIf ="CandidateInfo">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <th>Organizations</th>
+                <th>Total from all itemized sources</th>
+                <th>Total PAC contributions</th>
+                <th>Total individual contributions</th>
+            </thead>
+            <tbody>
+                <tr *ngFor = "let contributor of CandidateInfo">
+                    <td>{{contributor['@attributes'].org_name}}</td>
+                    <td>{{contributor['@attributes'].total}}</td>
+                    <td>{{contributor['@attributes'].pac}}</td>
+                    <td>{{contributor['@attributes'].indivs}}</td>
+                </tr>
+            </tbody>
+        </table>
+        {{notice}}
+    </div>
+    
+</div>

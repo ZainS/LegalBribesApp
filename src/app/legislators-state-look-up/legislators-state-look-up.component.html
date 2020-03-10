@@ -1,0 +1,30 @@
+<p-dropdown
+  [options]="usStates"
+  [(ngModel)]="selectedState"
+  optionLabel="name"
+  (onChange)="getStateLegislators($event)"
+  placeholder="Select a State"
+></p-dropdown>
+<div *ngIf="selectedStateLegislators">
+  <p-table [value]="selectedStateLegislators">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>firstlast</th>
+        <th>party</th>
+        <th>website</th>
+        <th>office</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-selectedStateLegislators>
+      <tr>
+        <td>{{ selectedStateLegislators["@attributes"].firstlast }}</td>
+        <td>{{ selectedStateLegislators["@attributes"].party }}</td>
+        <td>{{ selectedStateLegislators["@attributes"].website }}</td>
+        <td>{{ selectedStateLegislators["@attributes"].office }}</td>
+        <td>
+          <button [routerLink]= "['/CandContrib', selectedStateLegislators['@attributes'].cid]">More Info</button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
